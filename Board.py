@@ -1,0 +1,18 @@
+class Board:
+    def __init__(self, width: int, height: int, char: str) -> None:
+        self.width = width
+        self.height = height
+        self.board = [[char for i in range(width)] for j in range(height)]
+
+    def show_board(self):
+        for i in self.board:
+            for j in i:
+                print(j, end="\t")
+            print("")
+        for i in range(1, self.width + 1):
+            print(i, end="\t")
+
+    def change_cell(self, x: int, y: int, char: str):
+        if x <= 0 or y <= 0 or len(char) != 1 or x > self.width or y > self.height:
+            raise Exception("Values out of bounds")
+        self.board[y - 1][x - 1] = char
