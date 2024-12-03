@@ -12,7 +12,12 @@ class Board:
         for i in range(1, self.width + 1):
             print(i, end="\t")
 
-    def change_cell(self, x: int, y: int, char: str):
+    def change_cell_char(self, x: int, y: int, char: str):
         if x <= 0 or y <= 0 or len(char) != 1 or x > self.width or y > self.height:
             raise Exception("Values out of bounds")
         self.board[y - 1][x - 1] = char
+
+    def get_cell_char(self, x: int, y: int) -> str | None:
+        if x <= 0 or y <= 0 or x > self.width or y > self.height:
+            raise Exception("Values out of bounds")
+        return self.board[y - 1][x - 1]
