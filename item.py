@@ -8,4 +8,4 @@ class Item:
         self.step = step
 
     def is_on_ground(self, board_inst: Board) -> bool:
-        return self.y >= board_inst.height
+        return self.y > board_inst.height 
