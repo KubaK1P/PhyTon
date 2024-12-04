@@ -1,3 +1,5 @@
+from math import floor
+
 class Board:
     def __init__(self, width: int, height: int, char: str) -> None:
         self.width = width
@@ -16,11 +18,11 @@ class Board:
 
     def change_cell_char(self, x: int, y: int, char: str):
         if x <= 0 or y <= 0 or len(char) != 1 or x > self.width or y > self.height:
-            raise Exception("Values out of bounds")
-        self.board[y - 1][x - 1] = char
+            raise Exception("Values are out of bounds")
+        self.board[floor(y) - 1][floor(x) - 1] = char
 
     def get_cell_char(self, x: int, y: int) -> str | None:
         if x <= 0 or y <= 0 or x > self.width or y > self.height:
-            raise Exception("Values out of bounds")
-        return self.board[y - 1][x - 1]
+            raise Exception("Values are out of bounds")
+        return self.board[floor(y) - 1][floor(x) - 1]
 
