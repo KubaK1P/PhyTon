@@ -18,10 +18,12 @@ class Board:
 
     def change_cell_char(self, x: int, y: int, char: str):
         if x <= 0 or y <= 0 or len(char) != 1 or x > self.width or y > self.height:
-            raise Exception(f"Values are out of bounds {x} {y}")
-        self.board[floor(y) - 1][floor(x) - 1] = char
+            # raise Exception(f"Values are out of bounds {x} {y}")
+            pass
+        self.board[self.height - floor(y) - 1][self.width - floor(x) - 1] = char
 
     def get_cell_char(self, x: int, y: int) -> str | None:
         if x <= 0 or y <= 0 or x > self.width or y > self.height:
-            raise Exception(f"Values are out of bounds {x} {y}")
-        return self.board[floor(y) - 1][floor(x) - 1]
+            # raise Exception(f"Values are out of bounds {x} {y}")
+            pass
+        return self.board[self.height - floor(y) - 1][self.width - floor(x) - 1]
