@@ -1,0 +1,20 @@
+{
+  "config":{
+    "loop":{
+      "iterations": 200,
+      "start": 0,
+      "fps": 24
+    },
+    "physics":{
+      "gravity": 0.2,
+      "friction": 0.93
+    },
+    "events":[
+      {
+        "type": "boost",
+        "iteration": 100,
+        "strength": 2
+      }
+    ]
+  }
+}
