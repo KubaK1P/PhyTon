@@ -13,7 +13,6 @@ class Kevin(Item):
         self.a = np.array([0., -config.get("config.physics.gravity")])
 
     def propagate(self, iteration: int):
-
         self.v += self.a
         self.pos += self.v
 
@@ -21,8 +20,17 @@ class Kevin(Item):
             if e["iteration"] == iteration:
                 match e["type"]:
                     case "boost":
-                        self.v += np.array([0., float(e["strength"])])
+                        self.v += np.array([0.2, float(e["strength"])])
 
         if self.pos[1] < 0:
-            self.v *= -config.get("config.physics.friction")
+            self.v[1] *= -config.get("config.physics.friction")
             self.pos[1] = 0
+            self.v[0] *= config.get("config.physics.friction")
+
+        if self.pos[0] > config.get("config.board.width"):
+            self.v[0] *= -config.get("config.physics.friction")
+            self.pos[0] = config.get("config.board.width")
+
+        if self.pos[0] < 0:
+            self.v[0] *= -config.get("config.physics.friction")
+            self.pos[0] = 0

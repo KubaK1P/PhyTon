@@ -28,14 +28,13 @@ class Board:
         print("")
 
     def change_cell_char(self, x: int, y: int, char: str):
-        if x < 0 or y < 0 or len(char) != 1 or x > self.width or y > self.height:
+        if x < 0 or y < 0 or x > self.width or y > self.height:
             raise IndexError(f"Values are out of bounds {x} {y}")
 
-        self.board[self.height -
-                   floor(y) - 1][self.width - floor(x) - 1] = char
+        self.board[self.height - floor(y) - 1][round(x) - 1] = char
 
     def get_cell_char(self, x: int, y: int) -> str | None:
         if x < 0 or y < 0 or x > self.width or y > self.height:
             raise IndexError(f"Values are out of bounds {x} {y}")
 
-        return self.board[self.height - floor(y) - 1][self.width - floor(x) - 1]
+        return self.board[self.height - floor(y) - 1][round(x) - 1]

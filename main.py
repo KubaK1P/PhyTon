@@ -10,10 +10,15 @@ x = []  # arrays to plot
 y = []
 
 MAX_ITERATIONS = config.get("config.loop.iterations")
+WIDTH = config.get("config.board.width")
+HEIGHT = config.get("config.board.height")
+BOARD_CHAR = config.get("config.board.char")
 
-board = Board(10, 10, ".")  # the display object
+
+board = Board(WIDTH, HEIGHT, BOARD_CHAR)  # the display object
+
 # list of moving objects (kevins)
-kevins: list[Item] = [Kevin(4, 8), Kevin(6, 6)]
+kevins: list[Item] = [Kevin(6, 6)]
 
 
 # main code loop
@@ -42,7 +47,7 @@ while True:
     sleep(1./float(config.get("config.loop.fps")))
 
     x.append(iteration)
-    y.append(kevin.pos[1])
+    y.append(kevin.pos[0])
 
 
 plt.plot(np.array(x), np.array(y))

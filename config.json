@@ -15,6 +15,11 @@
         "iteration": 100,
         "strength": 2
       }
-    ]
+    ],
+    "board": {
+      "width": 12,
+      "height": 12,
+      "char": "."
+    }
   }
 }
