@@ -11,6 +11,7 @@ MAX_ITERATIONS = config.get("config.loop.iterations")
 WIDTH = config.get("config.board.width")
 HEIGHT = config.get("config.board.height")
 BOARD_CHAR = config.get("config.board.char")
+CUTSCENE = config.get("config.behavior.cutscene")
 
 
 def main():
@@ -65,5 +66,6 @@ def main():
 
 if __name__ == "__main__":
     from art import art
-    art()
+    if CUTSCENE:
+        art()
     main()

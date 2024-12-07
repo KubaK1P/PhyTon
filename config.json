@@ -22,7 +22,8 @@
       "char": "."
     },
     "behavior": {
-      "random": 1
+      "random": 1,
+      "cutscene": 1
     },
     "audio": {
       "enabled": 1
