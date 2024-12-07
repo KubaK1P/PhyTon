@@ -2,11 +2,13 @@ import numpy as np
 from items.item import Item
 from random import random
 from config import config
+from playsound import playsound
 
 GRAVITY = config.get("config.physics.gravity")
 RANDOM = config.get("config.behavior.random")
 FRICTION = config.get("config.physics.friction")
 WIDTH = config.get("config.board.width")
+AUDIO_ENABLED = config.get("config.audio.enabled")
 
 
 class Kevin(Item):
@@ -37,11 +39,23 @@ class Kevin(Item):
             self.v[1] *= -FRICTION
             self.pos[1] = 0
             self.v[0] *= FRICTION
+            if not AUDIO_ENABLED:
+                pass
+            else:
+                playsound("./audio/erro.mp3", False)
 
         if self.pos[0] > WIDTH:
             self.v[0] *= -FRICTION
             self.pos[0] = WIDTH
+            if not AUDIO_ENABLED:
+                pass
+            else:
+                playsound("./audio/erro.mp3", False)
 
         if self.pos[0] <= 0:
             self.v[0] *= -FRICTION
             self.pos[0] = 0
+            if not AUDIO_ENABLED:
+                pass
+            else:
+                playsound("./audio/erro.mp3", False)

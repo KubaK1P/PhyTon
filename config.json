@@ -23,6 +23,9 @@
     },
     "behavior": {
       "random": 1
+    },
+    "audio": {
+      "enabled": 1
     }
   }
 }
