@@ -10,9 +10,11 @@ WIDTH = config.get("config.board.width")
 
 
 class Kevin(Item):
-    def __init__(self, x, y):
+    def __init__(self, x: float, y: float, id: int):
         self.x = x
         self.y = y
+        self.id = id
+        self.lf = 0
         self.pos = np.array([x, y], dtype=float)
         if not RANDOM:
             self.v = np.array([0., 0.])
@@ -21,6 +23,7 @@ class Kevin(Item):
         self.a = np.array([0., -GRAVITY])
 
     def propagate(self, iteration: int):
+        self.lf += 1
         self.v += self.a
         self.pos += self.v
 
@@ -33,12 +36,14 @@ class Kevin(Item):
         if self.pos[1] < 0:
             self.v[1] *= -FRICTION
             self.pos[1] = 0
-            self.v[0] *= -FRICTION
+            self.v[0] *= FRICTION
 
         if self.pos[0] > WIDTH:
             self.v[0] *= -FRICTION
             self.pos[0] = WIDTH
 
-        if self.pos[0] < 0:
+        if self.pos[0] <= 0:
             self.v[0] *= -FRICTION
             self.pos[0] = 0
+
+        print(f"acc: {self.a}, vel: {self.v}, pos: {self.pos}")

@@ -1,7 +1,7 @@
 {
   "config":{
     "loop":{
-      "iterations": 200,
+      "iterations": 400,
       "start": 0,
       "fps": 24
     },
@@ -13,16 +13,16 @@
       {
         "type": "boost",
         "iteration": 100,
-        "strength": 2
+        "strength": 0
       }
     ],
     "board": {
-      "width": 20,
+      "width": 10,
       "height": 18,
       "char": "."
     },
     "behavior": {
-      "random": 0
+      "random": 1
     }
   }
 }

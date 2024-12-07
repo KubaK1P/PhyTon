@@ -7,7 +7,7 @@ class Board:
         self.width = width
         self.height = height
         self.char = char
-        self.board = [[char for i in range(width)] for j in range(height)]
+        self.board = [[char for i in range(width + 1)] for j in range(height)]
 
     def clear_board(self):
         if os.name == "nt":
@@ -22,7 +22,7 @@ class Board:
                 print(j, end="\t")
             print("")
 
-        for i in range(1, self.width + 1):
+        for i in range(0, self.width + 1):
             print(i, end="\t")
 
         print("")
@@ -31,10 +31,10 @@ class Board:
         if x < 0 or y < 0 or x > self.width or y > self.height:
             raise IndexError(f"Values are out of bounds {x} {y}")
 
-        self.board[self.height - floor(y) - 1][round(x) - 1] = char
+        self.board[self.height - floor(y) - 1][round(x)] = char
 
     def get_cell_char(self, x: int, y: int) -> str | None:
         if x < 0 or y < 0 or x > self.width or y > self.height:
             raise IndexError(f"Values are out of bounds {x} {y}")
 
-        return self.board[self.height - floor(y) - 1][round(x) - 1]
+        return self.board[self.height - floor(y) - 1][round(x)]

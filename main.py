@@ -5,20 +5,21 @@ from board import Board
 from items.item import Item
 from items.kevin import Kevin
 from config import config
-
-x = []  # arrays to plot
-y = []
+from random import randint
 
 MAX_ITERATIONS = config.get("config.loop.iterations")
 WIDTH = config.get("config.board.width")
 HEIGHT = config.get("config.board.height")
 BOARD_CHAR = config.get("config.board.char")
 
+x = []  # arrays to plot
+y = []
+current_id = 0
 
 board = Board(WIDTH, HEIGHT, BOARD_CHAR)  # the display object
 
 # list of moving objects (kevins)
-kevins: list[Item] = [Kevin(6, 12)]
+kevins: list[Item] = [Kevin(6, 12, 0)]
 
 
 # main code loop
@@ -34,7 +35,14 @@ while True:
             board.change_cell_char(kevin.pos[0], kevin.pos[1], ".")
             # draw kevin
             kevin.propagate(iteration)
-            board.change_cell_char(kevin.pos[0], kevin.pos[1], "K")
+
+            # kevin dies on the floor => a new one is born
+            if 0 < kevin.v[1] < 0.1 and kevin.pos[1] < 1:
+                kevins.pop(kevin.id - 1)
+                current_id += 1
+                kevins.append(Kevin(randint(1, WIDTH), HEIGHT - 3, current_id))
+            else:
+                board.change_cell_char(kevin.pos[0], kevin.pos[1], "K")
 
         # handlen't errors
         except IndexError as e:
@@ -48,7 +56,7 @@ while True:
 
     x.append(iteration)
     y.append(kevin.pos[0])
-
+print(kevins)
 
 plt.plot(np.array(x), np.array(y))
 plt.show()
