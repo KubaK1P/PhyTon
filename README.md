@@ -2,7 +2,18 @@
 ## Kevins bouncing with audio feedback
 *now working*
 
-## Official Kevin fanart by 1p22geo
+## kevin
+
+```
+         _ 
+      *     *
+    /   . .   \
+    |    v    |
+     \       /
+       *    *    
+         **
+```
+## kevin when you say you use windows
 ```
      __     __
      ()  _  ()
