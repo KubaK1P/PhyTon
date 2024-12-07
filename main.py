@@ -18,7 +18,7 @@ BOARD_CHAR = config.get("config.board.char")
 board = Board(WIDTH, HEIGHT, BOARD_CHAR)  # the display object
 
 # list of moving objects (kevins)
-kevins: list[Item] = [Kevin(6, 6)]
+kevins: list[Item] = [Kevin(6, 12)]
 
 
 # main code loop

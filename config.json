@@ -7,7 +7,7 @@
     },
     "physics":{
       "gravity": 0.2,
-      "friction": 0.93
+      "friction": 0.96
     },
     "events":[
       {
@@ -17,9 +17,12 @@
       }
     ],
     "board": {
-      "width": 12,
-      "height": 12,
+      "width": 20,
+      "height": 18,
       "char": "."
+    },
+    "behavior": {
+      "random": 0
     }
   }
 }
