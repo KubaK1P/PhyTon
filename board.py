@@ -15,7 +15,7 @@ class Board:
         else:
             os.system("clear")
 
-    def show_board(self):
+    def show_board(self, kevin_id: int):
         self.clear_board()
         for i in self.board:
             for j in i:
@@ -25,6 +25,7 @@ class Board:
         for i in range(0, self.width + 1):
             print(i, end="\t")
 
+        print(f"Kevin no. {kevin_id + 1}")
         print("")
 
     def change_cell_char(self, x: int, y: int, char: str):

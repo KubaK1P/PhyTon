@@ -38,7 +38,7 @@ while True:
 
             # kevin dies on the floor => a new one is born
             if 0 < kevin.v[1] < 0.1 and kevin.pos[1] < 1:
-                kevins.pop(kevin.id - 1)
+                kevins.pop()
                 current_id += 1
                 kevins.append(Kevin(randint(1, WIDTH), HEIGHT - 3, current_id))
             else:
@@ -51,7 +51,7 @@ while True:
         except Exception as e:
             raise e
 
-    board.show_board()
+    board.show_board(kevins[0].id)
     sleep(1./float(config.get("config.loop.fps")))
 
     x.append(iteration)

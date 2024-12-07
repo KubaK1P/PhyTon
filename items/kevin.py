@@ -45,5 +45,3 @@ class Kevin(Item):
         if self.pos[0] <= 0:
             self.v[0] *= -FRICTION
             self.pos[0] = 0
-
-        print(f"acc: {self.a}, vel: {self.v}, pos: {self.pos}")
