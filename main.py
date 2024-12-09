@@ -30,6 +30,7 @@ def main():
         iteration += 1
         if MAX_ITERATIONS >= 0 and iteration > MAX_ITERATIONS:
             break
+
         for kevin in kevins:
             try:
                 # clear the position after kevin
@@ -39,7 +40,6 @@ def main():
 
                 # kevin dies on the floor => a new one is born
                 if 0 < kevin.v[1] < 0.1 and kevin.pos[1] < 1:
-                    kevins.pop()
                     current_id += 1
                     kevins.append(
                         Kevin(randint(1, WIDTH), HEIGHT - 3, current_id))
@@ -53,7 +53,8 @@ def main():
             except Exception as e:
                 raise e
 
-        board.show_board(kevins[0].id)
+        kevins = [k for k in kevins if abs(k.v[1]) >= 0.1 or k.pos[1] >= 1]
+        board.show_board(current_id)
         sleep(1./float(config.get("config.loop.fps")))
 
         x.append(iteration)
